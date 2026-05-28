@@ -41,6 +41,6 @@ jobs:
 
             npm run build
 
-            pm2 restart parakhsqaaf
+            pm2 restart frontend
 
             echo "✅ parakhsqaaf Frontend deployment successful!"

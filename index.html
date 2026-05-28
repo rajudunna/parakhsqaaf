@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SQAAF — School Quality Assessment and Assurance Framework | PARAKH · NCERT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0a1f3d;
+    --navy-800:#102a4d;
+    --navy-700:#1a3865;
+    --navy-600:#2a4d80;
+    --saffron:#f5a623;
+    --saffron-dark:#d4890e;
+    --saffron-light:#f7c04a;
+    --gold:#e8b820;
+    --ivory:#fbf8f3;
+    --cream:#f4eee2;
+    --paper:#ffffff;
+    --ink:#0a1f3d;
+    --ink-soft:#3a4a63;
+    --ink-muted:#6b7a90;
+    --line:#e3dcc9;
+    --line-strong:#c8bea3;
+    --green:#2f7a4a;
+    --red:#b8412c;
+    --display: 'Fraunces', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--ivory);
+    color:var(--ink);
+    line-height:1.55;
+    font-size:16px;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- Top govt strip ---------- */
+  .gov-strip{
+    background:var(--navy-900);
+    color:#d8dde6;
+    font-size:12px;
+    padding:8px 0;
+    border-bottom:1px solid #1a3865;
+  }
+  .gov-strip-inner{
+    max-width:1280px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--sans);letter-spacing:.02em;
+  }
+  .gov-strip .left{display:flex;gap:24px;align-items:center}
+  .gov-strip .left::before{
+    content:"";display:inline-block;width:20px;height:14px;
+    background:linear-gradient(to bottom,#ff9933 33%,#fff 33% 66%,#138808 66%);
+    border:1px solid rgba(255,255,255,.2);
+  }
+  .gov-strip .right{display:flex;gap:20px}
+  .gov-strip a{color:#d8dde6;text-decoration:none;opacity:.8}
+  .gov-strip a:hover{opacity:1}
+
+  /* ---------- Header ---------- */
+  header.main{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:100;
+    box-shadow:0 1px 0 rgba(10,31,61,.04);
+  }
+  .header-inner{
+    width:100%;padding:18px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-logo{height:48px;width:auto;object-fit:contain;display:block}
+  .brand-logo-moe{height:54px}
+  .brand-logo-ncert{height:44px}
+  .brand-sep{width:1px;height:42px;background:var(--line);flex-shrink:0}
+
+  nav.primary{display:flex;gap:28px;align-items:center}
+  nav.primary a{
+    color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:500;
+    position:relative;padding:6px 0;
+  }
+  nav.primary a:hover{color:var(--navy-900)}
+  nav.primary a.active{color:var(--navy-900)}
+  nav.primary a.active::after{
+    content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--saffron);
+  }
+
+  .header-cta{display:flex;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;font-size:14px;font-weight:600;
+    text-decoration:none;border:none;cursor:pointer;
+    font-family:var(--sans);letter-spacing:.01em;
+    transition:all .18s ease;
+  }
+  .btn-primary{background:var(--saffron);color:#fff}
+  .btn-primary:hover{background:var(--saffron-dark)}
+  .btn-secondary{background:var(--navy-900);color:#fff}
+  .btn-secondary:hover{background:var(--navy-800)}
+  .btn-ghost{background:transparent;color:var(--navy-900);border:1px solid var(--navy-900)}
+  .btn-ghost:hover{background:var(--navy-900);color:#fff}
+  .btn-arrow{font-size:14px}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--ivory);
+    position:relative;
+    overflow:hidden;
+    padding:80px 0 100px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";position:absolute;top:0;right:0;width:50%;height:100%;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(232,119,34,.06), transparent 50%),
+      repeating-linear-gradient(135deg, transparent, transparent 40px, rgba(10,31,61,.025) 40px, rgba(10,31,61,.025) 41px);
+    pointer-events:none;
+  }
+  .hero-inner{
+    max-width:1280px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;
+    position:relative;z-index:2;
+  }
+
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--saffron-dark);margin-bottom:24px;
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;background:var(--saffron);border-radius:50%}
+  .hero-eyebrow .line{width:32px;height:1px;background:var(--saffron)}
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(40px,5.2vw,68px);
+    line-height:1.02;
+    letter-spacing:-.025em;
+    color:var(--navy-900);
+    margin-bottom:28px;
+    font-variation-settings: "opsz" 100;
+  }
+  .hero h1 em{
+    font-style:italic;font-weight:500;color:var(--saffron-dark);
+    font-variation-settings: "opsz" 100;
+  }
+  .hero h1 .underline{
+    position:relative;display:inline-block;
+  }
+  .hero h1 .underline::after{
+    content:"";position:absolute;bottom:6px;left:-2%;right:-2%;height:8px;
+    background:var(--saffron);opacity:.25;z-index:-1;
+  }
+  .hero p.lede{
+    font-size:18px;line-height:1.6;color:var(--ink-soft);
+    max-width:560px;margin-bottom:36px;
+  }
+  .hero p.lede strong{color:var(--navy-900);font-weight:600}
+
+  .hero-cta{display:flex;gap:14px;margin-bottom:48px;flex-wrap:wrap}
+
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--line-strong);
+    padding-top:32px;max-width:640px;
+  }
+  .hero-stat{
+    padding-right:20px;border-right:1px solid var(--line);
+  }
+  .hero-stat:last-child{border-right:none}
+  .hero-stat .num{
+    font-family:var(--display);font-weight:600;font-size:34px;color:var(--navy-900);
+    line-height:1;letter-spacing:-.02em;display:block;
+  }
+  .hero-stat .num .pct{font-size:18px;color:var(--saffron);margin-left:2px}
+  .hero-stat .lbl{
+    font-size:11px;color:var(--ink-muted);letter-spacing:.08em;
+    text-transform:uppercase;margin-top:8px;font-weight:500;
+  }
+
+  /* Hero visual — domain wheel */
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:480px;
+    margin-left:auto;
+  }
+  .wheel{
+    position:absolute;inset:0;
+    display:grid;place-items:center;
+  }
+  .wheel svg{width:100%;height:100%;overflow:visible}
+  .wheel-center{
+    position:absolute;
+    width:36%;height:36%;
+    background:var(--navy-900);
+    color:var(--ivory);
+    border-radius:50%;
+    display:grid;place-items:center;text-align:center;
+    box-shadow:
+      0 0 0 8px var(--ivory),
+      0 0 0 9px var(--line-strong),
+      0 20px 50px rgba(10,31,61,.18);
+  }
+  .wheel-center .cnt-num{
+    font-family:var(--display);font-weight:600;font-size:38px;
+    line-height:1;color:var(--saffron-light);
+  }
+  .wheel-center .cnt-lbl{
+    font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    margin-top:6px;opacity:.85;
+  }
+  .wheel-center .cnt-divider{
+    width:32px;height:1px;background:var(--saffron);margin:8px auto;
+  }
+  .wheel-center .cnt-frame{
+    font-family:var(--display);font-style:italic;font-size:13px;
+    margin-top:4px;opacity:.95;
+  }
+
+  /* domain label cards floating around */
+  .domain-pill{
+    position:absolute;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:10px 14px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--navy-900);
+    box-shadow:0 8px 24px rgba(10,31,61,.08);
+    display:flex;align-items:center;gap:10px;
+  }
+  .domain-pill .swatch{
+    width:8px;height:8px;border-radius:50%;
+  }
+  .domain-pill .pct{font-size:10px;color:var(--ink-muted);font-weight:500;margin-left:auto}
+  .dp-1{top:-2%;left:18%}
+  .dp-2{top:14%;right:-6%}
+  .dp-3{bottom:18%;right:-4%}
+  .dp-4{bottom:-2%;left:24%}
+  .dp-5{top:42%;left:-8%}
+
+  /* Endorsement strip */
+  .endorse-strip{
+    background:var(--navy-900);color:#cfd6e3;
+    padding:20px 0;border-top:3px solid var(--saffron);
+  }
+  .endorse-inner{
+    max-width:1280px;margin:0 auto;padding:0 32px;
+    display:flex;align-items:center;gap:48px;flex-wrap:wrap;
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .endorse-inner .lbl{color:var(--saffron-light);font-weight:600}
+  .endorse-inner .items{display:flex;gap:36px;flex-wrap:wrap;font-weight:500}
+  .endorse-inner .items span{position:relative;padding-right:36px}
+  .endorse-inner .items span:not(:last-child)::after{
+    content:"";position:absolute;right:0;top:50%;width:4px;height:4px;
+    background:var(--saffron);transform:translateY(-50%) rotate(45deg);
+  }
+
+  /* ---------- Section base ---------- */
+  section{padding:100px 0;position:relative}
+  .container{max-width:1280px;margin:0 auto;padding:0 32px}
+  .section-head{margin-bottom:64px;max-width:780px}
+  .section-eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--saffron-dark);margin-bottom:18px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .section-eyebrow .num{
+    font-family:var(--display);font-size:14px;
+    background:var(--navy-900);color:var(--ivory);
+    width:32px;height:32px;display:grid;place-items:center;
+  }
+  .section-head h2{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(32px,4vw,52px);
+    line-height:1.05;letter-spacing:-.02em;
+    color:var(--navy-900);margin-bottom:20px;
+  }
+  .section-head h2 em{font-style:italic;color:var(--saffron-dark);font-weight:500}
+  .section-head p{font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:680px}
+
+  /* ---------- Why SQAAF (problem) ---------- */
+  .why-sqaaf{background:var(--paper);border-bottom:1px solid var(--line)}
+  .gap-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid var(--line);
+  }
+  .gap-card{
+    padding:40px 32px 40px 0;
+    border-right:1px solid var(--line);
+    position:relative;
+  }
+  .gap-card:last-child{border-right:none;padding-right:0}
+  .gap-card:not(:first-child){padding-left:32px}
+  .gap-card .num{
+    font-family:var(--display);font-style:italic;font-weight:500;
+    font-size:18px;color:var(--saffron-dark);margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .gap-card .num::after{content:"";flex:1;height:1px;background:var(--line)}
+  .gap-card h3{
+    font-family:var(--display);font-weight:500;font-size:22px;
+    color:var(--navy-900);margin-bottom:14px;letter-spacing:-.01em;line-height:1.25;
+  }
+  .gap-card p{color:var(--ink-soft);font-size:15px;line-height:1.6}
+
+  .why-cta{
+    margin-top:56px;padding:40px;
+    background:var(--cream);border-left:4px solid var(--saffron);
+    display:flex;justify-content:space-between;align-items:center;gap:32px;
+  }
+  .why-cta .text{font-family:var(--display);font-size:22px;color:var(--navy-900);font-weight:500;line-height:1.35;max-width:780px}
+  .why-cta .text em{font-style:italic;color:var(--saffron-dark)}
+
+  /* ---------- The 5 domains ---------- */
+  .domains{background:var(--ivory)}
+  .domains-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);
+  }
+  .domain-card{
+    background:var(--paper);
+    padding:36px 28px;
+    position:relative;
+    transition:all .25s ease;
+    cursor:pointer;
+  }
+  .domain-card:hover{background:var(--cream)}
+  .domain-card .ic{
+    width:48px;height:48px;display:grid;place-items:center;
+    background:var(--navy-900);color:var(--ivory);
+    margin-bottom:24px;font-family:var(--display);font-weight:600;font-size:20px;
+  }
+  .domain-card[data-color="adm"] .ic{background:#1e4d7b}
+  .domain-card[data-color="cur"] .ic{background:#7b3a1e;}
+  .domain-card[data-color="ass"] .ic{background:#2c5e3f}
+  .domain-card[data-color="inf"] .ic{background:#6b3e7c}
+  .domain-card[data-color="inc"] .ic{background:#a8541a}
+  .domain-card h3{
+    font-family:var(--display);font-weight:500;font-size:22px;
+    color:var(--navy-900);margin-bottom:8px;letter-spacing:-.01em;
+  }
+  .domain-card .meta{
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-muted);margin-bottom:20px;
+  }
+  .domain-card .desc{
+    font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:24px;
+  }
+  .domain-card .footer{
+    padding-top:20px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .domain-card .footer .points{
+    font-family:var(--display);font-weight:600;font-size:28px;color:var(--saffron-dark);
+    line-height:1;
+  }
+  .domain-card .footer .points-lbl{
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);
+  }
+  .domain-card .footer .subs{
+    font-size:12px;color:var(--ink-soft);text-align:right;
+  }
+  .domain-card .footer .subs strong{
+    font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy-900);display:block;
+  }
+
+  /* ---------- Performance levels ---------- */
+  .perf-levels{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .perf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .perf-card{
+    padding:40px 32px;
+    border:1px solid var(--line);
+    background:var(--ivory);
+    position:relative;
+  }
+  .perf-card.lvl-2{background:var(--cream);transform:translateY(-16px);box-shadow:0 16px 40px rgba(10,31,61,.06)}
+  .perf-card.lvl-3{background:var(--navy-900);color:#cfd6e3;border-color:var(--navy-800);transform:translateY(-32px);box-shadow:0 24px 60px rgba(10,31,61,.18)}
+  .perf-card .badge{
+    display:inline-block;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    padding:5px 10px;background:var(--saffron);color:#fff;font-weight:500;
+    margin-bottom:24px;
+  }
+  .perf-card.lvl-3 .badge{background:var(--saffron);color:#fff}
+  .perf-card .name{
+    font-family:var(--display);font-weight:500;font-size:38px;color:var(--navy-900);
+    letter-spacing:-.02em;line-height:1;margin-bottom:6px;
+  }
+  .perf-card.lvl-3 .name{color:var(--saffron-light)}
+  .perf-card .name em{font-style:italic;font-weight:400}
+  .perf-card .translit{
+    font-size:13px;color:var(--ink-muted);font-style:italic;margin-bottom:24px;
+  }
+  .perf-card.lvl-3 .translit{color:rgba(207,214,227,.7)}
+  .perf-card .range{
+    font-family:var(--display);font-size:60px;font-weight:300;
+    color:var(--saffron-dark);line-height:1;margin-bottom:32px;letter-spacing:-.03em;
+  }
+  .perf-card.lvl-3 .range{color:var(--saffron-light)}
+  .perf-card .range sup{font-size:24px;vertical-align:super;margin-left:4px}
+  .perf-card ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .perf-card li{
+    font-size:14px;line-height:1.5;color:var(--ink-soft);
+    padding-left:20px;position:relative;
+  }
+  .perf-card.lvl-3 li{color:#cfd6e3}
+  .perf-card li::before{
+    content:"";position:absolute;left:0;top:8px;
+    width:8px;height:1px;background:var(--saffron);
+  }
+
+  /* ---------- Interactive assessment demo ---------- */
+  .assess-demo{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .demo-layout{
+    display:grid;grid-template-columns:280px 1fr;gap:0;
+    background:var(--paper);
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(10,31,61,.08);
+  }
+  .demo-sidebar{
+    background:var(--navy-900);color:#cfd6e3;padding:32px 0;
+  }
+  .demo-sidebar .sb-head{
+    padding:0 24px 24px;border-bottom:1px solid #1e3a65;margin-bottom:16px;
+  }
+  .demo-sidebar .sb-head .sch{
+    font-family:var(--display);font-size:18px;color:#fff;font-weight:500;line-height:1.2;
+  }
+  .demo-sidebar .sb-head .udise{
+    font-family:var(--mono);font-size:11px;color:var(--saffron-light);margin-top:6px;
+  }
+  .demo-sidebar .sb-progress{
+    padding:0 24px;margin-bottom:24px;
+  }
+  .demo-sidebar .sb-progress .lbl{
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(207,214,227,.6);margin-bottom:10px;
+  }
+  .progress-bar{height:6px;background:#1e3a65;position:relative}
+  .progress-bar::after{
+    content:"";position:absolute;left:0;top:0;bottom:0;
+    width:38%;background:var(--saffron);
+  }
+  .progress-pct{
+    font-family:var(--display);font-size:24px;color:#fff;font-weight:500;margin-top:10px;
+  }
+  .progress-pct span{font-size:13px;color:rgba(207,214,227,.6);font-weight:400;margin-left:4px}
+
+  .demo-sidebar ul.sb-nav{list-style:none;padding:0}
+  .demo-sidebar ul.sb-nav li{
+    padding:12px 24px;
+    font-size:14px;
+    cursor:pointer;
+    border-left:3px solid transparent;
+    transition:all .15s ease;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .demo-sidebar ul.sb-nav li:hover{background:#1a3865}
+  .demo-sidebar ul.sb-nav li.done{color:rgba(207,214,227,.6)}
+  .demo-sidebar ul.sb-nav li.done .ck{color:var(--green-light,#7bc88f);font-size:12px}
+  .demo-sidebar ul.sb-nav li.active{
+    background:#1a3865;border-left-color:var(--saffron);color:#fff;
+  }
+  .demo-sidebar ul.sb-nav li.active .ck{color:var(--saffron)}
+  .demo-sidebar ul.sb-nav li .ck{font-family:var(--mono);font-size:11px}
+
+  .demo-main{padding:40px 48px;background:var(--paper)}
+  .demo-breadcrumb{
+    font-size:12px;letter-spacing:.06em;color:var(--ink-muted);
+    text-transform:uppercase;margin-bottom:16px;
+  }
+  .demo-breadcrumb span{color:var(--saffron-dark);font-weight:600}
+  .demo-q-title{
+    font-family:var(--display);font-weight:500;font-size:24px;
+    color:var(--navy-900);line-height:1.3;letter-spacing:-.01em;
+    margin-bottom:10px;max-width:680px;
+  }
+  .demo-q-meta{
+    font-size:12px;color:var(--ink-muted);margin-bottom:32px;
+    display:flex;gap:16px;align-items:center;
+  }
+  .demo-q-meta .qcode{
+    font-family:var(--mono);background:var(--cream);padding:3px 8px;color:var(--navy-900);
+  }
+  .demo-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
+  .demo-opt{
+    border:1px solid var(--line);
+    padding:22px 20px;
+    cursor:pointer;
+    background:var(--paper);
+    transition:all .18s ease;
+    position:relative;
+  }
+  .demo-opt:hover{border-color:var(--saffron);background:#fffaf3}
+  .demo-opt.selected{
+    border-color:var(--saffron);background:#fff5e9;
+    box-shadow:0 0 0 1px var(--saffron) inset;
+  }
+  .demo-opt .opt-head{
+    display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;
+  }
+  .demo-opt .opt-name{
+    font-family:var(--display);font-weight:500;font-size:18px;color:var(--navy-900);
+  }
+  .demo-opt .opt-score{
+    font-family:var(--mono);font-size:11px;color:var(--ink-muted);
+  }
+  .demo-opt .opt-desc{
+    font-size:13.5px;color:var(--ink-soft);line-height:1.55;
+  }
+  .demo-opt .radio{
+    position:absolute;top:18px;right:18px;
+    width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line-strong);
+    background:var(--paper);transition:all .18s ease;
+  }
+  .demo-opt.selected .radio{
+    border-color:var(--saffron);background:var(--saffron);
+    box-shadow:inset 0 0 0 3px var(--paper);
+  }
+
+  .demo-evidence{
+    border:1px dashed var(--line-strong);
+    padding:24px;background:var(--ivory);
+    display:flex;justify-content:space-between;align-items:center;gap:24px;
+    margin-bottom:24px;
+  }
+  .demo-evidence .ev-text strong{
+    font-family:var(--display);font-weight:500;font-size:15px;color:var(--navy-900);
+    display:block;margin-bottom:4px;
+  }
+  .demo-evidence .ev-text p{font-size:13px;color:var(--ink-muted)}
+  .demo-evidence .btn-ghost{padding:9px 18px;font-size:13px}
+
+  .demo-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:24px;border-top:1px solid var(--line);
+  }
+  .demo-footer .save-note{font-size:12px;color:var(--ink-muted)}
+  .demo-footer .save-note .dot{
+    display:inline-block;width:6px;height:6px;background:var(--green);
+    border-radius:50%;margin-right:6px;vertical-align:middle;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  /* ---------- Process / how it works ---------- */
+  .process{background:var(--paper)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:32px;position:relative}
+  .steps::before{
+    content:"";position:absolute;top:36px;left:5%;right:5%;height:1px;
+    background:repeating-linear-gradient(to right, var(--line-strong) 0, var(--line-strong) 6px, transparent 6px, transparent 12px);
+  }
+  .step{padding:0 24px 0 0;position:relative;background:var(--paper)}
+  .step .num{
+    width:72px;height:72px;
+    background:var(--ivory);border:1px solid var(--line-strong);
+    display:grid;place-items:center;
+    font-family:var(--display);font-weight:500;font-size:28px;
+    color:var(--saffron-dark);
+    margin-bottom:24px;position:relative;z-index:2;
+  }
+  .step h3{
+    font-family:var(--display);font-weight:500;font-size:20px;
+    color:var(--navy-900);margin-bottom:10px;letter-spacing:-.01em;
+  }
+  .step p{font-size:14px;color:var(--ink-soft);line-height:1.55}
+
+  /* ---------- Dashboard preview ---------- */
+  .dashboard-section{background:var(--cream);border-top:1px solid var(--line)}
+  .dash-layout{
+    display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;
+  }
+  .dash-text h2{
+    font-family:var(--display);font-weight:400;font-size:42px;line-height:1.08;
+    color:var(--navy-900);margin-bottom:24px;letter-spacing:-.02em;
+  }
+  .dash-text h2 em{font-style:italic;color:var(--saffron-dark);font-weight:500}
+  .dash-text p{font-size:16px;color:var(--ink-soft);margin-bottom:20px;line-height:1.65}
+  .dash-features{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+  .dash-feature{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:14px 0;border-bottom:1px solid var(--line);
+  }
+  .dash-feature:last-child{border-bottom:none}
+  .dash-feature .num{
+    font-family:var(--mono);font-size:11px;color:var(--saffron-dark);
+    background:transparent;border:1px solid var(--saffron);
+    padding:3px 8px;flex-shrink:0;
+  }
+  .dash-feature .ft strong{
+    font-family:var(--display);font-weight:500;font-size:15px;color:var(--navy-900);display:block;margin-bottom:3px;
+  }
+  .dash-feature .ft p{font-size:13px;color:var(--ink-soft);margin:0}
+
+  .dash-visual{
+    background:var(--paper);
+    border:1px solid var(--line-strong);
+    padding:28px;
+    box-shadow:0 20px 50px rgba(10,31,61,.08);
+  }
+  .dash-visual-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:24px;
+  }
+  .dash-visual-head .title{
+    font-family:var(--display);font-weight:500;font-size:18px;color:var(--navy-900);
+  }
+  .dash-visual-head .ts{font-family:var(--mono);font-size:11px;color:var(--ink-muted)}
+
+  .dash-grade{
+    display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
+    background:var(--cream);padding:20px;margin-bottom:24px;
+    border-left:4px solid var(--saffron);
+  }
+  .dash-grade .pct-big{
+    font-family:var(--display);font-weight:500;font-size:54px;
+    color:var(--navy-900);line-height:.9;letter-spacing:-.03em;
+  }
+  .dash-grade .pct-big sup{font-size:22px;color:var(--saffron-dark);vertical-align:super;margin-left:2px}
+  .dash-grade .grade-name{
+    font-family:var(--display);font-style:italic;font-size:24px;color:var(--saffron-dark);
+    font-weight:500;line-height:1;margin-bottom:6px;
+  }
+  .dash-grade .grade-desc{font-size:12px;color:var(--ink-muted);letter-spacing:.06em;text-transform:uppercase}
+  .dash-grade .grade-score{
+    font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin-top:8px;
+  }
+  .dash-grade .grade-score strong{color:var(--navy-900);font-weight:500}
+
+  .dash-domain-list{display:flex;flex-direction:column;gap:12px}
+  .dash-domain-row{
+    display:grid;grid-template-columns:140px 1fr 70px;
+    align-items:center;gap:16px;
+  }
+  .dash-domain-row .dn{
+    font-size:13px;color:var(--navy-900);font-weight:500;
+  }
+  .dash-domain-row .bar{
+    height:8px;background:var(--cream);position:relative;
+  }
+  .dash-domain-row .bar .fill{
+    position:absolute;left:0;top:0;bottom:0;
+    background:var(--saffron);
+  }
+  .dash-domain-row.lvl-jagriti .fill{background:var(--green)}
+  .dash-domain-row.lvl-abhilasha .fill{background:var(--red)}
+  .dash-domain-row .val{
+    font-family:var(--mono);font-size:12px;color:var(--navy-900);text-align:right;
+  }
+
+  /* ---------- Quote / leadership ---------- */
+  .quote-block{background:var(--navy-900);color:#cfd6e3;position:relative;overflow:hidden}
+  .quote-block::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--saffron);
+  }
+  .quote-inner{max-width:900px;margin:0 auto;padding:0 32px;text-align:center;position:relative;z-index:2}
+  .quote-mark{
+    font-family:var(--display);font-style:italic;font-weight:300;
+    font-size:120px;color:var(--saffron);line-height:.6;margin-bottom:16px;opacity:.6;
+  }
+  .quote-text{
+    font-family:var(--display);font-weight:300;font-size:28px;line-height:1.4;
+    color:#fff;letter-spacing:-.005em;margin-bottom:36px;
+  }
+  .quote-text em{font-style:italic;color:var(--saffron-light);font-weight:400}
+  .quote-attr{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+  }
+  .quote-attr .name{
+    font-family:var(--display);font-weight:500;font-size:16px;color:#fff;
+  }
+  .quote-attr .role{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(207,214,227,.7)}
+
+  /* ---------- FAQ / contact ---------- */
+  .cta-final{background:var(--ivory);text-align:center;padding:120px 0}
+  .cta-final h2{
+    font-family:var(--display);font-weight:400;font-size:54px;line-height:1.05;
+    color:var(--navy-900);max-width:780px;margin:0 auto 24px;letter-spacing:-.025em;
+  }
+  .cta-final h2 em{font-style:italic;color:var(--saffron-dark);font-weight:500}
+  .cta-final p{
+    font-size:18px;color:var(--ink-soft);max-width:580px;margin:0 auto 40px;
+  }
+  .cta-final .ctas{display:flex;gap:14px;justify-content:center}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-900);color:#a8b3c4;padding:64px 0 32px;border-top:3px solid var(--saffron)}
+  .footer-inner{max-width:1280px;margin:0 auto;padding:0 32px}
+  .footer-top{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;
+    padding-bottom:40px;border-bottom:1px solid #1e3a65;
+  }
+  .footer-brand h3{
+    font-family:var(--display);font-weight:500;font-size:22px;color:#fff;margin-bottom:12px;
+  }
+  .footer-brand p{font-size:13px;line-height:1.6;max-width:300px}
+  .footer-col h4{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:20px;font-weight:600;
+  }
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col a{color:#a8b3c4;font-size:13px;text-decoration:none}
+  .footer-col a:hover{color:var(--saffron-light)}
+  .footer-bottom{
+    padding-top:24px;display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;color:#6b7a90;flex-wrap:wrap;gap:16px;
+  }
+  .footer-bottom .endorse{display:flex;gap:24px;align-items:center}
+  .footer-bottom .endorse span{
+    padding:5px 12px;border:1px solid #1e3a65;font-size:11px;letter-spacing:.06em;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1024px){
+    .hero-inner{grid-template-columns:1fr;gap:60px}
+    .hero-visual{max-width:380px;margin:0 auto}
+    .gap-grid{grid-template-columns:1fr;border-top:none}
+    .gap-card{border-right:none;border-bottom:1px solid var(--line);padding:32px 0!important}
+    .gap-card:last-child{border-bottom:none}
+    .domains-grid{grid-template-columns:repeat(2,1fr)}
+    .perf-grid{grid-template-columns:1fr;gap:16px}
+    .perf-card.lvl-2,.perf-card.lvl-3{transform:none}
+    .demo-layout{grid-template-columns:1fr}
+    .demo-sidebar{padding:24px 0}
+    .demo-options{grid-template-columns:1fr}
+    .steps{grid-template-columns:repeat(2,1fr);gap:32px}
+    .dash-layout{grid-template-columns:1fr;gap:48px}
+    .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+    nav.primary{display:none}
+  }
+  @media (max-width:640px){
+    section{padding:64px 0}
+    .container{padding:0 20px}
+    .gov-strip-inner{padding:0 20px;font-size:11px}
+    .gov-strip .right{display:none}
+    .header-inner{padding:14px 20px}
+    .header-cta .btn-secondary{display:none}
+    .brand-text .name{font-size:16px}
+    .hero{padding:48px 0 64px}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:24px 0}
+    .hero-stat{border-right:none;border-bottom:1px solid var(--line);padding-bottom:20px;padding-right:0}
+    .domains-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .footer-top{grid-template-columns:1fr}
+    .cta-final h2{font-size:36px}
+    .quote-text{font-size:20px}
+    .demo-main{padding:28px 20px}
+    .why-cta{flex-direction:column;align-items:flex-start;padding:28px}
+    .dash-domain-row{grid-template-columns:100px 1fr 60px;gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- GOV STRIP -->
+<div class="gov-strip">
+  <div class="gov-strip-inner">
+    <div class="left">Government of India · Ministry of Education · Department of School Education &amp; Literacy</div>
+    <div class="right">
+      <a href="#">हिंदी</a>
+      <a href="#">Skip to Content</a>
+      <a href="#">A− A A+</a>
+      <a href="#">Screen Reader</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="main">
+  <div class="header-inner">
+    <div class="brand">
+      <img src="parakh-logo.jpeg" alt="PARAKH" class="brand-logo brand-logo-parakh">
+      <div class="brand-sep"></div>
+      <img src="adobe-ministry-of-education-collab-removebg-preview.png" alt="Ministry of Education, Government of India" class="brand-logo brand-logo-moe">
+    </div>
+    <nav class="primary">
+      <a href="#framework" class="active">Framework</a>
+      <a href="#domains">5 Domains</a>
+      <a href="#assess">Self-Assessment</a>
+      <a href="#dashboard">Reports</a>
+      <a href="SQAAF.pdf" download="Equivalence-of-Boards.pdf">Equivalence of Boards ↓</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#" class="btn btn-ghost">School Login</a>
+      <a href="#cta" class="btn btn-secondary">Register School <span class="btn-arrow">→</span></a>
+      <div class="brand-sep"></div>
+      <img src="NCERT.jpeg" alt="NCERT" class="brand-logo brand-logo-ncert">
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="framework" style="padding-top:80px">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Aligned with NEP 2020 &amp; National Curriculum Framework
+        <span class="line"></span>
+      </div>
+      <h1>
+        A national framework to <em>assess,</em> assure, and elevate the <span class="underline">quality of every school</span> in India.
+      </h1>
+      <p class="lede">
+        The <strong>School Quality Assessment &amp; Assurance Framework (SQAAF)</strong> gives schools a structured, evidence-backed pathway to evaluate themselves across five domains — and turn insight into measurable improvement.
+      </p>
+      <div class="hero-cta">
+        <a href="#assess" class="btn btn-primary">Begin Self-Assessment <span class="btn-arrow">→</span></a>
+        <a href="#framework" class="btn btn-ghost">Read the Framework</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="num">5</span>
+          <span class="lbl">Core Domains</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">53</span>
+          <span class="lbl">Sub-Domains</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">1,047</span>
+          <span class="lbl">Max Score</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">20<span class="pct">%</span></span>
+          <span class="lbl">Each Weighted</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual: domain wheel -->
+    <div class="hero-visual">
+      <div class="wheel">
+        <svg viewBox="-110 -110 220 220" aria-hidden="true">
+          <!-- 5 segments -->
+          <g transform="rotate(-90)">
+            <!-- Administration -->
+            <path d="M 0 0 L 95 0 A 95 95 0 0 1 29.36 90.34 Z" fill="#1e4d7b" opacity=".88"/>
+            <!-- Curriculum -->
+            <path d="M 0 0 L 29.36 90.34 A 95 95 0 0 1 -76.86 55.85 Z" fill="#7b3a1e" opacity=".88"/>
+            <!-- Assessment -->
+            <path d="M 0 0 L -76.86 55.85 A 95 95 0 0 1 -76.86 -55.85 Z" fill="#2c5e3f" opacity=".88"/>
+            <!-- Infrastructure -->
+            <path d="M 0 0 L -76.86 -55.85 A 95 95 0 0 1 29.36 -90.34 Z" fill="#6b3e7c" opacity=".88"/>
+            <!-- Inclusiveness -->
+            <path d="M 0 0 L 29.36 -90.34 A 95 95 0 0 1 95 0 Z" fill="#a8541a" opacity=".88"/>
+          </g>
+          <!-- Outer ring -->
+          <circle cx="0" cy="0" r="100" fill="none" stroke="#0a1f3d" stroke-width=".8" opacity=".25"/>
+          <circle cx="0" cy="0" r="98" fill="none" stroke="#0a1f3d" stroke-width=".4" opacity=".4"/>
+        </svg>
+        <div class="wheel-center">
+          <div class="cnt-num">SQAAF</div>
+          <div class="cnt-divider"></div>
+          <div class="cnt-frame">Five Domains</div>
+          <div class="cnt-lbl">Equal Weight</div>
+        </div>
+      </div>
+      <div class="domain-pill dp-1"><span class="swatch" style="background:#1e4d7b"></span>Administration <span class="pct">20%</span></div>
+      <div class="domain-pill dp-2"><span class="swatch" style="background:#7b3a1e"></span>Curriculum <span class="pct">20%</span></div>
+      <div class="domain-pill dp-3"><span class="swatch" style="background:#2c5e3f"></span>Assessment <span class="pct">20%</span></div>
+      <div class="domain-pill dp-4"><span class="swatch" style="background:#6b3e7c"></span>Infrastructure <span class="pct">20%</span></div>
+      <div class="domain-pill dp-5"><span class="swatch" style="background:#a8541a"></span>Inclusiveness <span class="pct">20%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSE STRIP -->
+<div class="endorse-strip">
+  <div class="endorse-inner">
+    <span class="lbl">Endorsed by</span>
+    <div class="items">
+      <span>Ministry of Education, GoI</span>
+      <span>NCERT</span>
+      <span>PARAKH</span>
+      <span>NEP 2020 Aligned</span>
+      <span>NCF Compliant</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY SQAAF -->
+<section class="why-sqaaf">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="num">01</span> Why SQAAF</div>
+      <h2>Quality cannot be assumed. It must be <em>measured, witnessed, and improved.</em></h2>
+      <p>For decades, school evaluations in India have been compliance-led rather than improvement-led. SQAAF reverses this — providing a single, structured framework that schools can use to honestly assess themselves and chart a forward path.</p>
+    </div>
+
+    <div class="gap-grid">
+      <div class="gap-card">
+        <div class="num">i.</div>
+        <h3>Fragmented assessment standards across boards</h3>
+        <p>State boards, CBSE, ICSE, and international boards have historically used incomparable quality benchmarks — making equity in school evaluation impossible.</p>
+      </div>
+      <div class="gap-card">
+        <div class="num">ii.</div>
+        <h3>Compliance over continuous improvement</h3>
+        <p>Existing audits focus on minimum standards rather than evolving practice. SQAAF embeds a growth-oriented model into the assessment itself.</p>
+      </div>
+      <div class="gap-card">
+        <div class="num">iii.</div>
+        <h3>No path from finding to action</h3>
+        <p>Without a structured framework, schools struggle to translate inspection findings into concrete next steps. SQAAF closes this loop with a 3-step process.</p>
+      </div>
+    </div>
+
+    <div class="why-cta">
+      <div class="text">
+        SQAAF responds to the call of <em>NEP 2020</em> — establishing equitable, learner-centric, evidence-based quality assurance as a national standard.
+      </div>
+      <a href="#framework" class="btn btn-secondary">Read NEP Alignment →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 DOMAINS -->
+<section class="domains" id="domains">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="num">02</span> The Five Domains</div>
+      <h2>One school. Five dimensions. <em>Equal weight, holistic view.</em></h2>
+      <p>Each domain is broken down into sub-domains and granular indicators, each rated against three performance levels with evidence-supported scoring.</p>
+    </div>
+
+    <div class="domains-grid">
+      <div class="domain-card" data-color="adm">
+        <div class="ic">अ</div>
+        <h3>Administration</h3>
+        <div class="meta">Domain 1 · Governance &amp; Leadership</div>
+        <p class="desc">Leadership, vision, financial stewardship, staff development, stakeholder engagement, and school safety.</p>
+        <div class="footer">
+          <div>
+            <div class="points">168</div>
+            <div class="points-lbl">Max Points</div>
+          </div>
+          <div class="subs"><strong>8</strong>Sub-Domains</div>
+        </div>
+      </div>
+
+      <div class="domain-card" data-color="cur">
+        <div class="ic">क</div>
+        <h3>Curriculum</h3>
+        <div class="meta">Domain 2 · Learning Design</div>
+        <p class="desc">Curriculum alignment, learner-centred pedagogy, 21st-century skills, digital literacy, arts, and multilingual education.</p>
+        <div class="footer">
+          <div>
+            <div class="points">354</div>
+            <div class="points-lbl">Max Points</div>
+          </div>
+          <div class="subs"><strong>17</strong>Sub-Domains</div>
+        </div>
+      </div>
+
+      <div class="domain-card" data-color="ass">
+        <div class="ic">मू</div>
+        <h3>Assessment</h3>
+        <div class="meta">Domain 3 · Evaluation Practice</div>
+        <p class="desc">Competency-based assessment, Holistic Progress Cards, formative &amp; summative methods, integrity, and credit systems.</p>
+        <div class="footer">
+          <div>
+            <div class="points">180</div>
+            <div class="points-lbl">Max Points</div>
+          </div>
+          <div class="subs"><strong>11</strong>Sub-Domains</div>
+        </div>
+      </div>
+
+      <div class="domain-card" data-color="inf">
+        <div class="ic">सं</div>
+        <h3>Infrastructure</h3>
+        <div class="meta">Domain 4 · Physical &amp; Digital</div>
+        <p class="desc">Basic amenities, smart classrooms, labs, library, playgrounds, green buildings, and sustainable practices.</p>
+        <div class="footer">
+          <div>
+            <div class="points">153</div>
+            <div class="points-lbl">Max Points</div>
+          </div>
+          <div class="subs"><strong>9</strong>Sub-Domains</div>
+        </div>
+      </div>
+
+      <div class="domain-card" data-color="inc">
+        <div class="ic">स</div>
+        <h3>Inclusiveness</h3>
+        <div class="meta">Domain 5 · Equity &amp; Belonging</div>
+        <p class="desc">Special needs support, gender sensitivity, tribal engagement, socio-economic inclusivity, and talent nurturance.</p>
+        <div class="footer">
+          <div>
+            <div class="points">192</div>
+            <div class="points-lbl">Max Points</div>
+          </div>
+          <div class="subs"><strong>8</strong>Sub-Domains</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCE LEVELS -->
+<section class="perf-levels">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="num">03</span> Levels of Performance</div>
+      <h2>Three tiers. One <em>upward trajectory.</em></h2>
+      <p>Every sub-domain question is rated against three benchmarks — drawn from the Sanskrit lexicon of educational growth — that capture not just where a school stands, but where it is headed.</p>
+    </div>
+
+    <div class="perf-grid">
+      <div class="perf-card lvl-1">
+        <span class="badge">LEVEL 01</span>
+        <div class="name"><em>Abhilasha</em></div>
+        <div class="translit">अभिलाषा · "Aspiration"</div>
+        <div class="range">&lt;60<sup>%</sup></div>
+        <ul>
+          <li>Minimal or inconsistent implementation of quality practices</li>
+          <li>Limited adherence to national and regional educational standards</li>
+          <li>Lack of structured systems for planning, monitoring, and feedback</li>
+          <li>Inadequate resources or infrastructure to meet benchmarks</li>
+        </ul>
+      </div>
+
+      <div class="perf-card lvl-2">
+        <span class="badge">LEVEL 02</span>
+        <div class="name"><em>Pragati</em></div>
+        <div class="translit">प्रगति · "Progress"</div>
+        <div class="range">60-75<sup>%</sup></div>
+        <ul>
+          <li>Partial alignment with SQAAF standards</li>
+          <li>Moderate engagement of stakeholders</li>
+          <li>Practices are functional but lack consistency or scalability</li>
+          <li>Identifiable room for improvement in monitoring systems</li>
+        </ul>
+      </div>
+
+      <div class="perf-card lvl-3">
+        <span class="badge">LEVEL 03</span>
+        <div class="name"><em>Jagriti</em></div>
+        <div class="translit">जागृति · "Awakening"</div>
+        <div class="range">&gt;75<sup>%</sup></div>
+        <ul>
+          <li>Complete alignment with national and SQAAF benchmarks</li>
+          <li>Implementation of innovative, learner-centred practices</li>
+          <li>Strong systems for monitoring, feedback, and improvement</li>
+          <li>Focus on inclusiveness, sustainability, and holistic development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE ASSESSMENT DEMO -->
+<section class="assess-demo" id="assess">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="num">04</span> The Self-Assessment Portal</div>
+      <h2>From <em>250+ indicator questions</em> to a clear, actionable report — in one workflow.</h2>
+      <p>A live preview of the school-facing self-assessment interface. Save progress, upload supporting evidence, and submit for review — all in a single, structured experience.</p>
+    </div>
+
+    <div class="demo-layout">
+      <aside class="demo-sidebar">
+        <div class="sb-head">
+          <div class="sch">Rajkiya Pratibha Vikas Vidyalaya</div>
+          <div class="udise">UDISE+ 0901100201 · Cycle 2026</div>
+        </div>
+        <div class="sb-progress">
+          <div class="lbl">Overall Progress</div>
+          <div class="progress-bar"></div>
+          <div class="progress-pct">38<span>% complete</span></div>
+        </div>
+        <ul class="sb-nav">
+          <li class="done">Administration <span class="ck">8 / 8 ✓</span></li>
+          <li class="active">Curriculum <span class="ck">6 / 17</span></li>
+          <li>Assessment <span class="ck">0 / 11</span></li>
+          <li>Infrastructure <span class="ck">0 / 9</span></li>
+          <li>Inclusiveness <span class="ck">0 / 8</span></li>
+        </ul>
+      </aside>
+
+      <div class="demo-main">
+        <div class="demo-breadcrumb">Domain 2 — Curriculum / Sub-domain 5 · <span>Skill-based Education</span></div>
+        <h3 class="demo-q-title">How effectively does the school integrate skill-based education aligned with national vocational frameworks?</h3>
+        <div class="demo-q-meta">
+          <span class="qcode">Q-CUR-5.2</span>
+          <span>Indicator weightage: 6 points</span>
+          <span>Required evidence: 2 documents</span>
+        </div>
+
+        <div class="demo-options">
+          <div class="demo-opt">
+            <div class="radio"></div>
+            <div class="opt-head">
+              <div class="opt-name"><em>Abhilasha</em></div>
+              <div class="opt-score">+2 pts</div>
+            </div>
+            <div class="opt-desc">Skill-based modules are absent or treated as optional extras with no curricular linkage.</div>
+          </div>
+          <div class="demo-opt selected">
+            <div class="radio"></div>
+            <div class="opt-head">
+              <div class="opt-name"><em>Pragati</em></div>
+              <div class="opt-score">+4 pts</div>
+            </div>
+            <div class="opt-desc">Skill modules exist for select grades but vocational framework alignment is partial.</div>
+          </div>
+          <div class="demo-opt">
+            <div class="radio"></div>
+            <div class="opt-head">
+              <div class="opt-name"><em>Jagriti</em></div>
+              <div class="opt-score">+6 pts</div>
+            </div>
+            <div class="opt-desc">Full integration across grades, mapped to NSQF levels, with certified vocational educators.</div>
+          </div>
+        </div>
+
+        <div class="demo-evidence">
+          <div class="ev-text">
+            <strong>Supporting Evidence</strong>
+            <p>Upload curriculum maps, NSQF certificates, or workshop reports (PDF · DOCX · JPG · max 10 MB)</p>
+          </div>
+          <a href="#" class="btn btn-ghost">+ Add Evidence</a>
+        </div>
+
+        <div class="demo-footer">
+          <div class="save-note"><span class="dot"></span>Auto-saved at 14:32 IST</div>
+          <div style="display:flex;gap:10px">
+            <a href="#" class="btn btn-ghost">← Previous</a>
+            <a href="#" class="btn btn-primary">Save &amp; Continue →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="num">05</span> The 3-Step SQAAF Journey</div>
+      <h2>Not just rating — <em>a deliberate path to improvement.</em></h2>
+      <p>SQAAF is designed to move schools beyond self-rating into reflection, planning, and demonstrable change. The process is the product.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Self-Reflect</h3>
+        <p>Systematically assess current practices across the 5 domains using data, evidence, and stakeholder feedback.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Analyse Gaps</h3>
+        <p>Critically review strengths and improvement areas through the auto-generated domain-wise gap report.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Plan Action</h3>
+        <p>Formulate and implement targeted interventions tied to specific sub-domain weaknesses with a roadmap.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>Measure Impact</h3>
+        <p>Reassess outcomes in the next cycle to guide continuous, evidence-based institutional planning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dashboard-section" id="dashboard">
+  <div class="container">
+    <div class="dash-layout">
+      <div class="dash-text">
+        <div class="section-eyebrow"><span class="num">06</span> The Outcome Dashboard</div>
+        <h2>Every score becomes a <em>decision.</em></h2>
+        <p>The moment your school submits the assessment, SQAAF auto-generates a domain-wise performance dashboard, identifies your overall band, and recommends a sub-domain-level action plan.</p>
+
+        <div class="dash-features">
+          <div class="dash-feature">
+            <div class="num">01</div>
+            <div class="ft"><strong>Domain-wise Radar</strong><p>See your school's shape of strength across all five quality dimensions.</p></div>
+          </div>
+          <div class="dash-feature">
+            <div class="num">02</div>
+            <div class="ft"><strong>Band Determination</strong><p>Auto-calculated Abhilasha / Pragati / Jagriti rating with percentile context.</p></div>
+          </div>
+          <div class="dash-feature">
+            <div class="num">03</div>
+            <div class="ft"><strong>Sub-domain Action Plan</strong><p>Lowest-scoring indicators auto-surface with framework-aligned next steps.</p></div>
+          </div>
+          <div class="dash-feature">
+            <div class="num">04</div>
+            <div class="ft"><strong>Year-on-Year Tracking</strong><p>Compare cycles to evidence continuous improvement to authorities &amp; community.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-visual">
+        <div class="dash-visual-head">
+          <div class="title">School Quality Report · Cycle 2025–26</div>
+          <div class="ts">Issued · 14 Mar 2026</div>
+        </div>
+
+        <div class="dash-grade">
+          <div class="pct-big">73<sup>%</sup></div>
+          <div>
+            <div class="grade-name">Pragati</div>
+            <div class="grade-desc">Performing Satisfactorily</div>
+            <div class="grade-score">Score · <strong>764 / 1,047</strong> · ↑ 7% vs last cycle</div>
+          </div>
+        </div>
+
+        <div class="dash-domain-list">
+          <div class="dash-domain-row lvl-jagriti">
+            <div class="dn">Administration</div>
+            <div class="bar"><div class="fill" style="width:82%"></div></div>
+            <div class="val">82%</div>
+          </div>
+          <div class="dash-domain-row">
+            <div class="dn">Curriculum</div>
+            <div class="bar"><div class="fill" style="width:71%"></div></div>
+            <div class="val">71%</div>
+          </div>
+          <div class="dash-domain-row">
+            <div class="dn">Assessment</div>
+            <div class="bar"><div class="fill" style="width:68%"></div></div>
+            <div class="val">68%</div>
+          </div>
+          <div class="dash-domain-row lvl-abhilasha">
+            <div class="dn">Infrastructure</div>
+            <div class="bar"><div class="fill" style="width:54%"></div></div>
+            <div class="val">54%</div>
+          </div>
+          <div class="dash-domain-row lvl-jagriti">
+            <div class="dn">Inclusiveness</div>
+            <div class="bar"><div class="fill" style="width:79%"></div></div>
+            <div class="val">79%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-block">
+  <div class="quote-inner">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      The responsibility of nurturing the next generation lies with all of us. Through SQAAF, we can ensure that every school becomes a <em>beacon of learning, innovation, and equity.</em>
+    </p>
+    <div class="quote-attr">
+      <div class="name">Shri Sanjay Kumar</div>
+      <div class="role">Secretary · Department of School Education &amp; Literacy · Ministry of Education, GoI</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final" id="cta">
+  <div class="container">
+    <h2>Begin your school's <em>SQAAF journey</em> today.</h2>
+    <p>Register your institution with PARAKH to access the full self-assessment portal, evidence locker, and the official quality certification roadmap.</p>
+    <div class="ctas">
+      <a href="#" class="btn btn-primary">Register School →</a>
+      <a href="#" class="btn btn-ghost">Schedule Orientation</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>SQAAF</h3>
+        <p>The School Quality Assessment and Assurance Framework — a national initiative of PARAKH, NCERT, under the Ministry of Education, Government of India.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Framework</h4>
+        <ul>
+          <li><a href="#">5 Domains</a></li>
+          <li><a href="#">Performance Levels</a></li>
+          <li><a href="#">Scoring System</a></li>
+          <li><a href="#">Evidence Checklist</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>For Schools</h4>
+        <ul>
+          <li><a href="#">Self-Assessment Portal</a></li>
+          <li><a href="#">School Login</a></li>
+          <li><a href="#">Help &amp; Training</a></li>
+          <li><a href="SQAAF.pdf" download="Equivalence-of-Boards.pdf">Download PDF</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connected</h4>
+        <ul>
+          <li><a href="#">PARAKH Official</a></li>
+          <li><a href="#">NCERT</a></li>
+          <li><a href="#">UDISE+</a></li>
+          <li><a href="#">DigiLocker · MeriPehchaan</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 PARAKH · NCERT · Ministry of Education, Government of India</div>
+      <div class="endorse">
+        <span>NEP 2020 Aligned</span>
+        <span>NCF Compliant</span>
+        <span>WCAG 2.1 AA</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple option-select interactivity
+  document.querySelectorAll('.demo-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      opt.parentElement.querySelectorAll('.demo-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+
+  // Sidebar nav highlight
+  document.querySelectorAll('.sb-nav li').forEach(li => {
+    li.addEventListener('click', () => {
+      document.querySelectorAll('.sb-nav li').forEach(l => l.classList.remove('active'));
+      li.classList.add('active');
+    });
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav.primary a').forEach(a => {
+    a.addEventListener('click', e => {
+      const tgt = a.getAttribute('href');
+      if (tgt.startsWith('#')) {
+        document.querySelectorAll('nav.primary a').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

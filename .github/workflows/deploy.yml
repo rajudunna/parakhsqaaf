@@ -2,49 +2,45 @@ name: PARAKH SQAAF — Frontend Deployment
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
-    name: Deploy Frontend to Production
     runs-on: ubuntu-latest
 
     steps:
       - name: Deploy Frontend via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.0
+
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 522
+          script_stop: true
+          timeout: 30s
+
           script: |
             set -e
 
             echo "🌐 Deploying PARAKH ITMS Frontend..."
 
-            # Load NVM
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-            # Use Node version
-            nvm use 22.22.2
+            nvm use 22
 
-            # Go to project directory
             cd /var/www/html/parakhsqaaf_ui
 
-            # Pull latest code
             git pull origin main
 
-            # Clean old build
             rm -rf .next
 
-            # Install dependencies
             npm ci || npm install --force
 
-            # Build application
             npm run build
 
-            # Restart PM2 (use process name, not id if possible)
             pm2 restart frontend
 
             echo "✅ Frontend deployment successful!"

@@ -24,7 +24,7 @@ jobs:
           script: |
             set -e
 
-            echo "🌐 Deploying PARAKH ITMS Frontend..."
+            echo "🌐 Deploying PARAKHSQAAF Frontend..."
 
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -41,6 +41,6 @@ jobs:
 
             npm run build
 
-            pm2 restart frontend
+            pm2 restart parakhsqaaf
 
-            echo "✅ Frontend deployment successful!"
+            echo "✅ parakhsqaaf Frontend deployment successful!"

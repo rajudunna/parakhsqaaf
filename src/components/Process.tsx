@@ -1,23 +1,25 @@
-const steps = [
-  { num: '01', title: 'Self-Reflect', desc: 'Systematically assess current practices across the 5 domains using data, evidence, and stakeholder feedback.' },
-  { num: '02', title: 'Analyse Gaps', desc: 'Critically review strengths and improvement areas through the auto-generated domain-wise gap report.' },
-  { num: '03', title: 'Plan Action', desc: 'Formulate and implement targeted interventions tied to specific sub-domain weaknesses with a roadmap.' },
-  { num: '04', title: 'Measure Impact', desc: 'Reassess outcomes in the next cycle to guide continuous, evidence-based institutional planning.' },
-];
-
 export default function Process() {
+  const steps = [
+    { num: '01', title: 'Self-Assess', desc: 'Rate all 349 indicators across the five domains with evidence and stakeholder input.' },
+    { num: '02', title: 'Diagnose', desc: 'Auto-generated dashboard reveals strengths and the lowest-scoring sub-domains.' },
+    { num: '03', title: 'Plan', desc: 'Build a School Quality Improvement Plan with framework-aligned actions & owners.' },
+    { num: '04', title: 'Accredit', desc: 'SSSA reviews evidence, validates the rating and grants accreditation status.' },
+    { num: '05', title: 'Re-measure', desc: 'Reassess next cycle, benchmark against peers and evidence continuous growth.' },
+  ];
   return (
-    <section className="process">
+    <section className="workflow" id="workflow">
       <div className="container">
-        <div className="section-head">
-          <div className="section-eyebrow"><span className="num">05</span> The 3-Step SQAAF Journey</div>
-          <h2>Not just rating — <em>a deliberate path to improvement.</em></h2>
-          <p>SQAAF is designed to move schools beyond self-rating into reflection, planning, and demonstrable change. The process is the product.</p>
+        <div className="section-head center" style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="num">05</span><span className="rule"></span>How It Works
+          </div>
+          <h2 className="disp">From self-assessment to <em>accreditation</em> in five steps</h2>
+          <p>SQAAF is not a one-time audit. It is a continuous improvement cycle — each step feeding the next, each cycle raising the baseline for the one that follows.</p>
         </div>
-        <div className="steps">
-          {steps.map((s) => (
-            <div key={s.num} className="step">
-              <div className="num">{s.num}</div>
+        <div className="wf-steps">
+          {steps.map(s => (
+            <div key={s.num} className="wf-step">
+              <div className="ball">{s.num}</div>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
             </div>

@@ -1,36 +1,43 @@
 export default function WhySqaaf() {
   return (
-    <section className="why-sqaaf">
+    <section className="why" id="why">
       <div className="container">
         <div className="section-head">
-          <div className="section-eyebrow"><span className="num">01</span> Why SQAAF</div>
-          <h2>Quality cannot be assumed. It must be <em>measured, witnessed, and improved.</em></h2>
-          <p>For decades, school evaluations in India have been compliance-led rather than improvement-led. SQAAF reverses this — providing a single, structured framework that schools can use to honestly assess themselves and chart a forward path.</p>
+          <div className="eyebrow"><span className="num">01</span><span className="rule"></span>The Challenge</div>
+          <h2 className="disp">Why schools need a <em>standardised quality framework</em></h2>
+          <p>For decades, school evaluation in India has been fragmented and compliance-led — incomparable across boards,
+            one-time rather than continuous, and disconnected from real improvement. SQAAF, NCERT&apos;s School Quality
+            Assessment &amp; Assurance Framework, was created to fix exactly this.</p>
         </div>
 
-        <div className="gap-grid">
+        <div className="why-grid">
           <div className="gap-card">
-            <div className="num">i.</div>
-            <h3>Fragmented assessment standards across boards</h3>
-            <p>State boards, CBSE, ICSE, and international boards have historically used incomparable quality benchmarks — making equity in school evaluation impossible.</p>
+            <div className="ic">⚖️</div>
+            <h3>Incomparable standards across boards</h3>
+            <p>State boards, CBSE, ICSE and international boards have long used incompatible quality benchmarks — making
+              equitable, like-for-like school evaluation impossible across India.</p>
           </div>
           <div className="gap-card">
-            <div className="num">ii.</div>
-            <h3>Compliance over continuous improvement</h3>
-            <p>Existing audits focus on minimum standards rather than evolving practice. SQAAF embeds a growth-oriented model into the assessment itself.</p>
+            <div className="ic">📋</div>
+            <h3>Compliance, not improvement</h3>
+            <p>Existing audits test for minimum standards as a one-time event, rather than evolving practice. There is no
+              growth-oriented model that shows a school how to get better.</p>
           </div>
           <div className="gap-card">
-            <div className="num">iii.</div>
+            <div className="ic">🔌</div>
             <h3>No path from finding to action</h3>
-            <p>Without a structured framework, schools struggle to translate inspection findings into concrete next steps. SQAAF closes this loop with a 3-step process.</p>
+            <p>Even where assessments exist, schools struggle to turn findings into concrete next steps — and there&apos;s no
+              transparent, verifiable record for the state authority or community.</p>
           </div>
         </div>
 
-        <div className="why-cta">
-          <div className="text">
-            SQAAF responds to the call of <em>NEP 2020</em> — establishing equitable, learner-centric, evidence-based quality assurance as a national standard.
+        <div className="why-solution">
+          <div className="txt">
+            <div className="tag">How SQAAF Solves It</div>
+            <h3>We digitise the complete SQAAF framework — every domain, sub-domain and indicator — into one platform that
+              makes each school&apos;s rating <em>evidence-backed, comparable, and converted into a concrete improvement plan.</em></h3>
           </div>
-          <a href="#framework" className="btn btn-secondary">Read NEP Alignment →</a>
+          <a href="#framework" className="btn btn-gold">See the Framework <span className="btn-arrow">→</span></a>
         </div>
       </div>
     </section>

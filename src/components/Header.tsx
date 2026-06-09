@@ -42,17 +42,17 @@ export default function Header() {
               <img src="/adobe-ministry-of-education-collab-removebg-preview.png" alt="Ministry of Education" width="110" />
             </a>
           </div>
+          <div className="parakh">
+            <a href="#top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/parakh-logo.jpeg" alt="PARAKH" width="55" />
+            </a>
+          </div>
           <div className="logo-ncert">
             &nbsp;
             <a href="#top">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/NCERT.jpeg" alt="NCERT" width="70" />
-            </a>
-          </div>
-          <div className="parakh">
-            <a href="#top">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/parakh-logo.jpeg" alt="PARAKH" width="55" />
             </a>
           </div>
         </div>

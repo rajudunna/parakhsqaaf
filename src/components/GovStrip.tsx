@@ -21,7 +21,7 @@ export default function GovStrip() {
         <div className="right">
           <a href="https://parakh.ncert.gov.in/" target="_blank" rel="noopener">PARAKH</a>
           <span className="sep">·</span>
-          <a href="#">NCERT</a>
+          <a href="https://ncert.nic.in/" target="_blank" rel="noopener">NCERT</a>
           <span className="sep">·</span>
           <a href="#">हिन्दी</a>
           <span className="sep">·</span>

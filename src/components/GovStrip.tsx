@@ -1,16 +1,4 @@
-'use client';
-
 export default function GovStrip() {
-  const handleAccess = (i: number) => {
-    const root = document.documentElement;
-    const cur = parseFloat(getComputedStyle(root).fontSize) || 16;
-    let next = cur;
-    if (i === 0) next = Math.max(14, cur - 1);
-    else if (i === 1) next = 16;
-    else next = Math.min(19, cur + 1);
-    document.body.style.fontSize = next + 'px';
-  };
-
   return (
     <div className="gov-strip">
       <div className="gov-strip-inner">

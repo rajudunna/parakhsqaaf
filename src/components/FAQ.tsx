@@ -8,7 +8,7 @@ const FAQS = [
   },
   {
     q: 'How does the State School Standard Setting Authority (SSSA) fit in?',
-    a: <>The platform includes a dedicated <b>SSSA workflow</b> per State/UT — review school submissions, validate uploaded evidence, manage accreditation and monitor compliance, with role-based access and full audit trails. Results can be published to the State Vidya Samiksha Kendra portal for transparent public disclosure.</>,
+    a: <>The platform includes a dedicated <b>SSSA workflow</b> per State/UT — review school submissions, validate uploaded evidence, manage assurance and monitor compliance, with role-based access and full audit trails. Results can be published to the State Vidya Samiksha Kendra portal for transparent public disclosure.</>,
   },
   {
     q: 'What happens after a school completes its self-assessment?',

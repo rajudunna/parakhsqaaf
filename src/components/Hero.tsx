@@ -48,7 +48,7 @@ export default function Hero() {
           <h1>A National Standard to <span className="gold">Assessment &amp; Assurance</span> the Quality of Every School</h1>
           <p className="lede">
             A complete school quality system that digitises the official <strong>SQAAF framework</strong> —
-            from guided self-assessment and evidence collection to improvement planning and SSSA accreditation.{' '}
+            from guided self-assessment and evidence collection to improvement planning and SSSA assurance.{' '}
             <strong>5 domains, 53 sub-domains, 1,047 quality points</strong>, scored across three growth tiers.
           </p>
           <div className="hero-cta">

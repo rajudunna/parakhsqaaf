@@ -40,15 +40,15 @@ export default function Features() {
           </div>
           <div className="feat">
             <div className="icon">🛡️</div>
-            <h3>SSSA Review &amp; Accreditation</h3>
+            <h3>SSSA Review &amp; Assurance</h3>
             <p>State School Standard Setting Authority workflow — review submissions, validate evidence, accredit and
               monitor compliance with full audit trails.</p>
-            <div className="tags"><span>Role-Based</span><span>Audit Trail</span><span>Accreditation</span></div>
+            <div className="tags"><span>Role-Based</span><span>Audit Trail</span><span>Assurance</span></div>
           </div>
           <div className="feat">
             <div className="icon">🌐</div>
             <h3>Public Disclosure</h3>
-            <p>Publishes accreditation status and quality outcomes to the State Vidya Samiksha Kendra portal — building
+            <p>Publishes assurance status and quality outcomes to the State Vidya Samiksha Kendra portal — building
               community trust and accountability.</p>
             <div className="tags"><span>VSK Portal</span><span>Public Status</span><span>Equity Data</span></div>
           </div>

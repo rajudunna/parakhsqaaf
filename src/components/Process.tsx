@@ -3,7 +3,7 @@ export default function Process() {
     { num: '01', title: 'Self-Assess', desc: 'Rate all 349 indicators across the five domains with evidence and stakeholder input.' },
     { num: '02', title: 'Diagnose', desc: 'Auto-generated dashboard reveals strengths and the lowest-scoring sub-domains.' },
     { num: '03', title: 'Plan', desc: 'Build a School Quality Improvement Plan with framework-aligned actions & owners.' },
-    { num: '04', title: 'Accredit', desc: 'SSSA reviews evidence, validates the rating and grants accreditation status.' },
+    { num: '04', title: 'Accredit', desc: 'SSSA reviews evidence, validates the rating and grants assurance status.' },
     { num: '05', title: 'Re-measure', desc: 'Reassess next cycle, benchmark against peers and evidence continuous growth.' },
   ];
   return (
@@ -13,7 +13,7 @@ export default function Process() {
           <div className="eyebrow" style={{ justifyContent: 'center' }}>
             <span className="num">05</span><span className="rule"></span>How It Works
           </div>
-          <h2 className="disp">From self-assessment to <em>accreditation</em> in five steps</h2>
+          <h2 className="disp">From self-assessment to <em>assurance</em> in five steps</h2>
           <p>SQAAF is not a one-time audit. It is a continuous improvement cycle — each step feeding the next, each cycle raising the baseline for the one that follows.</p>
         </div>
         <div className="wf-steps">
